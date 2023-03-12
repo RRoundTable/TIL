@@ -10,16 +10,17 @@ auth:
     adminPasswordKey: postgres-password
 
 primary:
+  podAntiAffinityPreset: hard
   initdb:
     scriptsConfigMap: "postgres-init"
   persistence:
-    existingClaim: "postgresql-pvc"
-
+    storageClass: local-storage
 architecture: replication
 readReplicas:
-  replicaCount: 2
+  podAntiAffinityPreset: hard
+  replicaCount: 3
   persistence:
-    existingClaim: "postgresql-pvc"
+    storageClass: local-storage
 volumePermissions:
   enabled: true
 
