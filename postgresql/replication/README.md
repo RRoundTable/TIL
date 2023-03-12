@@ -93,6 +93,13 @@ Create secret for postgres auth.
 kubectl apply -f config/secret.yaml
 ```
 
+Create PVC for postgresql.
+
+```
+kubectl apply -f volume
+```
+
+
 Deploy postgresql chart.
 
 ```
