@@ -5,7 +5,6 @@
 - Minikube
 - Helm
 
-
 ## Objective
 
 CP(Consistency-Partition Tolerance) Postgresql Replication Tutorial
@@ -63,9 +62,48 @@ These settings control the behavior of a standby server that is to receive repli
 
 ## Setup
 
+Create K8s cluster with 3 nodes.
+
 ```
 make cluster
 ```
+
+Check the nodes. (3 nodes)
+
+```
+kubectl get nodes
+```
+
+```
+NAME             STATUS   ROLES           AGE     VERSION
+postgresql       Ready    control-plane   5m11s   v1.26.1
+postgresql-m02   Ready    <none>          4m43s   v1.26.1
+postgresql-m03   Ready    <none>          4m19s   v1.26.1
+```
+
+Create configmap for postgres init script.
+
+```
+kubectl apply -f config/configamp.yaml
+```
+
+Create secret for postgres auth.
+
+```
+kubectl apply -f config/secret.yaml
+```
+
+Deploy postgresql chart.
+
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm dependency build charts
+helm install postgresql ./charts --values values.yaml
+```
+
+## Checklist
+
+- [] 
 
 ## References
 - https://en.wikipedia.org/wiki/CAP_theorem
