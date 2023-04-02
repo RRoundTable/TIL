@@ -1,6 +1,6 @@
 import torch.nn as nn
 from layers import LayerNorm
-from utils import LayerNorm
+from utils import clones
 
 class Decoder(nn.Module):
     "Generic N layer decoder with masking."

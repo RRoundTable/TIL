@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
+import math
 
+from utils import clones
 
 def attention(query, key, value, mask=None, dropout=None):
     "Compute 'Scaled Dot Product Attention'"
