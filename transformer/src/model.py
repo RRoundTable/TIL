@@ -1,4 +1,5 @@
 import torch.nn as nn
+from torch.nn.functional import log_softmax
 
 from attention import MultiHeadedAttention
 from position_wise_feedforward import PositionwiseFeedForward
@@ -6,7 +7,7 @@ from positional_encoding import PositionalEncoding, Embeddings
 from layers import EncoderLayer, DecoderLayer
 from encoder import Encoder
 from decoder import Decoder
-
+import copy
 
 class EncoderDecoder(nn.Module):
     """

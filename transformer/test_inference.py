@@ -1,6 +1,6 @@
 import torch
 from src.model import make_model
-
+from utils import subsequent_mask
 
 def inference_test():
     test_model = make_model(11, 11, 2)
